@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk | Hongan Ekspor</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111111;
+            color: white;
+        }
+
+        header {
+            background: #1c1c1c;
+            padding: 25px 15px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        h1 {
+            color: #d4af37;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #dddddd;
+        }
+
+        .container {
+            padding: 25px 18px;
+            text-align: center;
+        }
+
+        .container > p {
+            color: #cccccc;
+        }
+
+        .produk {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .kartu {
+            background: #222222;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #444444;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .kartu:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+        }
+
+        .foto {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 8px;
+            display: block;
+            cursor: pointer;
+        }
+
+        .nama-produk {
+            font-size: 17px;
+            min-height: 42px;
+            margin: 18px 0 10px;
+            cursor: pointer;
+        }
+
+        .harga {
+            color: #d4af37;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .petunjuk {
+            color: #bbbbbb;
+            font-size: 13px;
+        }
+
+        .kembali {
+            display: inline-block;
+            margin: 25px 0;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        /* JENDELA DETAIL PRODUK */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-konten {
+            background: #222222;
+            border: 2px solid #d4af37;
+            border-radius: 15px;
+            max-width: 450px;
+            width: 100%;
+            margin: 35px auto;
+            padding: 22px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-foto {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .modal h2 {
+            color: #d4af37;
+        }
+
+        .deskripsi {
+            color: #dddddd;
+            line-height: 1.7;
+        }
+
+        .tutup {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: transparent;
+            color: white;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .tombol {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 8px 4px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .whatsapp {
+            background: #25D366;
+            color: #111111;
+        }
+
+        .tutup-bawah {
+            background: #d4af37;
+            color: #111111;
+            border: none;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #1c1c1c;
+            border-top: 1px solid #444444;
+            color: #aaaaaa;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>HONGAN EKSPOR</h1>
+    <p>Rasa Nusantara Melintas Negara</p>
+</header>
+
+<main class="container">
+
+    <h2>Katalog Produk Kami</h2>
+    <p>Temukan cita rasa Indonesia di Malaysia.</p>
+    <p class="petunjuk">Klik foto produk untuk melihat keterangannya.</p>
+
+    <div class="produk">
+
+        <div class="kartu" onclick="tampilInfo(0)">
+            <img class="foto" src="krisapung.jpeg" alt="Keripik Pisang Cokelat">
+            <h3 class="nama-produk">Keripik Pisang Cokelat</h3>
+            <p class="harga">RM 12.00</p>
+        </div>
+
+        <div class="kartu" onclick="tampilInfo(1)">
+            <img class="foto" src="kripca.jpeg" alt="Keripik Kaca Pedas">
+            <h3 class="nama-produk">Keripik Kaca Pedas</h3>
+            <p class="harga">RM 7.00</p>
+        </div>
+
+        <div class="kartu" onclick="tampilInfo(2)">
+            <img class="foto" src="mieseblak.jpeg" alt="Mie Seblak">
+            <h3 class="nama-produk">Mie Seblak</h3>
+            <p class="harga">RM 7.00</p>
+        </div>
+
+        <div class="kartu" onclick="tampilInfo(3)">
+            <img class="foto" src="basreng.jpeg" alt="Basreng">
+            <h3 class="nama-produk">Basreng</h3>
+            <p class="harga">RM 7.00</p>
+        </div>
+
+        <div class="kartu" onclick="tampilInfo(4)">
+            <img class="foto" src="pangsit.jpeg" alt="Pangsit Bawang">
+            <h3 class="nama-produk">Pangsit Bawang</h3>
+            <p class="harga">RM 7.00</p>
+        </div>
+
+        <div class="kartu" onclick="tampilInfo(5)">
+            <img class="foto" src="sale.jpeg" alt="Sale Lidah Crispy">
+            <h3 class="nama-produk">Sale Lidah Crispy</h3>
+            <p class="harga">RM 7.00</p>
+        </div>
+
+        <div class="kartu" onclick="tampilInfo(6)">
+            <img class="foto" src="tahu.jpeg" alt="Tahu Bulat Crispy">
+            <h3 class="nama-produk">Tahu Bulat Crispy</h3>
+            <p class="harga">RM 7.00</p>
+        </div>
+
+        <div class="kartu" onclick="tampilInfo(7)">
+            <img class="foto" src="sosis.jpeg" alt="Sosreng">
+            <h3 class="nama-produk">Sosreng</h3>
+            <p class="harga">RM 7.00</p>
+        </div>
+
+        <div class="kartu" onclick="tampilInfo(8)">
+            <img class="foto" src="sistik.jpeg" alt="Sistik">
+            <h3 class="nama-produk">Sistik</h3>
+            <p class="harga">RM 7.00</p>
+        </div>
+
+        <div class="kartu" onclick="tampilInfo(9)">
+            <img class="foto" src="mix.jpeg" alt="Kerupuk Mix Seblak">
+            <h3 class="nama-produk">Kerupuk Mix Seblak</h3>
+            <p class="harga">RM 7.00</p>
+        </div>
+
+    </div>
+
+    <a class="kembali" href="hongan.html">
+        ← Kembali ke Halaman Utama
+    </a>
+
+</main>
+
+<!-- JENDELA KETERANGAN PRODUK -->
+<div class="modal" id="modalProduk" onclick="klikLuar(event)">
+    <div class="modal-konten">
+
+        <button class="tutup" onclick="tutupInfo()" aria-label="Tutup">&times;</button>
+
+        <img class="modal-foto" id="detailFoto" src="" alt="Foto produk">
+
+        <h2 id="detailNama"></h2>
+
+        <p class="harga" id="detailHarga"></p>
+
+        <p class="deskripsi" id="detailDeskripsi"></p>
+
+        <a class="tombol whatsapp" id="pesanWhatsApp"
+           href="https://wa.me/message/PC4YSB5QPDYWC1"
+           target="_blank" rel="noopener">
+            Pesan via WhatsApp
+        </a>
+
+        <br>
+
+        <button class="tombol tutup-bawah" onclick="tutupInfo()">
+            Tutup
+        </button>
+
+    </div>
+</div>
+
+<footer>
+    HONGAN EKSPOR &copy; 2026
+    <br>
+    Rasa Nusantara Melintas Negara
+</footer>
+
+<script>
+    const daftarProduk = [
+        {
+            nama: "Keripik Pisang Cokelat",
+            foto: "krisapung.jpeg",
+            harga: "RM 12.00",
+            deskripsi: "Nikmati keripik pisang cokelat dengan cita rasa manis dan renyah. Cocok untuk teman santai dan camilan sehari-hari."
+        },
+        {
+            nama: "Keripik Kaca Pedas",
+            foto: "kripca.jpeg",
+            harga: "RM 7.00",
+            deskripsi: "Camilan keripik kaca dengan sensasi pedas untuk menemani waktu santai."
+        },
+        {
+            nama: "Mie Seblak",
+            foto: "mieseblak.jpeg",
+            harga: "RM 7.00",
+            deskripsi: "Camilan mie dengan cita rasa seblak khas Indonesia."
+        },
+        {
+            nama: "Basreng",
+            foto: "basreng.jpeg",
+            harga: "RM 7.00",
+            deskripsi: "Basreng, camilan khas Indonesia dengan cita rasa gurih dan sensasi pedas."
+        },
+        {
+            nama: "Pangsit Bawang",
+            foto: "pangsit.jpeg",
+            harga: "RM 7.00",
+            deskripsi: "Camilan pangsit bawang yang cocok dinikmati saat santai atau bersama teman."
+        },
+        {
+            nama: "Sale Lidah Crispy",
+            foto: "sale.jpeg",
+            harga: "RM 7.00",
+            deskripsi: "Camilan sale lidah crispy untuk menemani waktu santai."
+        },
+        {
+            nama: "Tahu Bulat Crispy",
+            foto: "tahu.jpeg",
+            harga: "RM 7.00",
+            deskripsi: "Camilan tahu bulat crispy dengan sensasi renyah."
+        },
+        {
+            nama: "Sosreng",
+            foto: "sosis.jpeg",
+            harga: "RM 7.00",
+            deskripsi: "Camilan sosreng dengan cita rasa gurih khas Indonesia."
+        },
+        {
+            nama: "Sistik",
+            foto: "sistik.jpeg",
+            harga: "RM 7.00",
+            deskripsi: "Sistik renyah yang cocok dijadikan camilan sehari-hari."
+        },
+        {
+            nama: "Kerupuk Mix Seblak",
+            foto: "mix.jpeg",
+            harga: "RM 7.00",
+            deskripsi: "Campuran kerupuk dengan cita rasa seblak khas Indonesia."
+        }
+    ];
+
+    function tampilInfo(index) {
+        const produk = daftarProduk[index];
+
+        document.getElementById("detailNama").textContent = produk.nama;
+        document.getElementById("detailHarga").textContent = produk.harga;
+        document.getElementById("detailDeskripsi").textContent = produk.deskripsi;
+        document.getElementById("detailFoto").src = produk.foto;
+        document.getElementById("detailFoto").alt = produk.nama;
+
+        document.getElementById("modalProduk").style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
+
+    function tutupInfo() {
+        document.getElementById("modalProduk").style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    function klikLuar(event) {
+        if (event.target.id === "modalProduk") {
+            tutupInfo();
+        }
+    }
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            tutupInfo();
+        }
+    });
+</script>
+
+</body>
+</html>
