@@ -6,7 +6,17 @@
 
     <title>Hongan Ekspor | Rasa Nusantara</title>
 
+    <meta name="description" content="Hongan Ekspor menghadirkan camilan khas Indonesia untuk masyarakat Indonesia di Malaysia. Rasa Nusantara Melintas Negara.">
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -22,7 +32,7 @@
         }
 
         .logo {
-            width: 200px;
+            width: 180px;
             max-width: 80%;
             height: auto;
             display: block;
@@ -36,14 +46,24 @@
 
         header p {
             color: #cccccc;
+            line-height: 1.6;
         }
 
         .hero {
-            padding: 60px 20px;
+            padding: 75px 20px;
+            background:
+                radial-gradient(
+                    ellipse at top,
+                    #3a1717 0%,
+                    #111111 70%
+                );
+            animation: muncul 1s ease-out;
         }
 
         .hero h2 {
-            font-size: 36px;
+            font-size: clamp(32px, 6vw, 48px);
+            line-height: 1.3;
+            margin-bottom: 20px;
         }
 
         .hero span {
@@ -53,6 +73,8 @@
         .hero p {
             color: #cccccc;
             line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 28px;
         }
 
         .tombol {
@@ -60,19 +82,105 @@
             background: #b5121b;
             color: white;
             padding: 14px 28px;
-            border-radius: 5px;
+            border-radius: 6px;
             text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid #d4af37;
         }
 
-        .about {
+        .tombol:hover {
+            background: #d4af37;
+            color: #111111;
+            transform: translateY(-3px);
+        }
+
+        .tentang {
+            padding: 50px 20px;
             background-color: #1c1c1c;
-            padding: 40px 20px;
+        }
+
+        .tentang h2,
+        .keunggulan h2 {
+            color: #d4af37;
+        }
+
+        .tentang p {
+            color: #cccccc;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .keunggulan {
+            padding: 45px 20px;
+        }
+
+        .kartu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            max-width: 950px;
+            margin: 30px auto 0;
+        }
+
+        .kartu {
+            background: #1c1c1c;
+            border: 1px solid #5b4713;
+            border-radius: 10px;
+            padding: 25px 18px;
+            width: 260px;
+            transition: 0.3s;
+        }
+
+        .kartu:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+
+        .ikon {
+            font-size: 35px;
+        }
+
+        .kartu h3 {
+            color: #d4af37;
+        }
+
+        .kartu p {
+            color: #cccccc;
+            line-height: 1.6;
         }
 
         footer {
-            padding: 20px;
+            padding: 25px 15px;
+            background: #080808;
+            border-top: 1px solid #333333;
             color: #888888;
             font-size: 13px;
+            line-height: 1.8;
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
@@ -84,7 +192,7 @@
             src="hongan.logo.jpeg"
             alt="Logo Hongan Ekspor"
             class="logo"
-        
+        >
 
         <h1>HONGAN EKSPOR</h1>
 
@@ -92,32 +200,73 @@
 
         <p>Makanan khas Indonesia yang bikin kangen kampung halaman.</p>
     </header>
-	 <img
-            src="hongan.jpg.jpg"
-            alt="Logo Hongan Ekspor"
-            class="logo"
-    <section class="hero">
-        <h2>Dari Indonesia,<br><span>untuk dunia.</span></h2>
 
-        <p>
-            Membawa cita rasa khas Nusantara lebih dekat
-            kepada masyarakat Indonesia di Luar Negara.
-        </p>
+    <main>
 
-        <a href="produk.html" class="tombol">
-            Kenali Hongan
-        </a>
-    </section>
+        <section class="hero">
+            <h2>
+                Dari Indonesia,<br>
+                <span>untuk dunia.</span>
+            </h2>
 
-    <section class="about">
-        <h2>Tentang Hongan</h2>
+            <p>
+                Membawa cita rasa khas Nusantara lebih dekat
+                kepada masyarakat Indonesia di luar negeri.
+            </p>
 
-        <p>
-            Hongan Ekspor menghadirkan pilihan produk
-            makanan khas Indonesia untuk menemani
-            kerinduan akan kampung halaman.
-        </p>
-    </section>
+            <a href="produk.html" class="tombol">
+                🛍️ Kenali Produk Kami
+            </a>
+        </section>
+
+        <section class="tentang">
+            <h2>Tentang Hongan</h2>
+
+            <p>
+                Hongan Ekspor menghadirkan pilihan produk
+                makanan khas Indonesia untuk menemani
+                kerinduan akan kampung halaman.
+                Kami ingin membawa produk Nusantara
+                melangkah lebih jauh ke pasar internasional.
+            </p>
+        </section>
+
+        <section class="keunggulan">
+            <h2>Mengapa Hongan?</h2>
+
+            <div class="kartu-container">
+
+                <div class="kartu">
+                    <div class="ikon">🇮🇩</div>
+                    <h3>Cita Rasa Nusantara</h3>
+                    <p>
+                        Mengenalkan camilan khas Indonesia
+                        kepada masyarakat di luar negeri.
+                    </p>
+                </div>
+
+                <div class="kartu">
+                    <div class="ikon">🌏</div>
+                    <h3>Melintas Negara</h3>
+                    <p>
+                        Membuka peluang bagi produk lokal
+                        untuk menjangkau pasar internasional.
+                    </p>
+                </div>
+
+                <div class="kartu">
+                    <div class="ikon">🤝</div>
+                    <h3>Mendukung Produk Lokal</h3>
+                    <p>
+                        Menjadi bagian dari perjalanan
+                        produk Indonesia menuju pasar global.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
 
     <footer>
         &copy; 2026 Hongan Ekspor.<br>
